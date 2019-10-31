@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <label>Introduce un nombre</label>
+    <input id="name"></input>
+    <button onclick="mostrarPersonajePorNombre()">Mostrar Personaje</button>
+    <button onclick="mostrarTodosPersonajes()">Mostrar todos los Personajes</button>
+    <button onclick="limpiarResultados()">Limpiar Resultados</button>
+    <div id ="character"></div>
+    <div id="characterVacio" style="height: 50px;"></div>
+    <div id="characters"> </div>
+    <nav>
+        <ul>
+            <li class="submenu"><a href="#">Personajes</a><i class="far fa-caret-square-down more"></i><ul>
+                <li><a href="#" onclick="buscarPorNombre()">Por Nombre</a></li>
+                <li><a href="#">Servicio B</a></li>
+                <li><a href="#">Servicio C</a></li>
+            </ul></li>
+        </ul>
+    </nav>
+    
+    
+</body>
+</html>

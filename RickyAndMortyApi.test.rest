@@ -1,0 +1,25 @@
+https://rickandmortyapi.com/api/character/?name=rick&status=alive
+
+###
+
+https://rickandmortyapi.com/api/episode
+
+###
+
+https://dragon-ball-api.herokuapp.com/api/character
+
+###
+
+https://dragon-ball-api.herokuapp.com/api/character/Gohan
+###
+
+https://dragon-ball-api.herokuapp.com/api/planet/Earth
+
+###
+https://pokeapi.co/api/v2/berry-firmness/2/
+
+###
+https://digimon-api.herokuapp.com/api/digimon/
+
+###
+http https://swapi.co/api/vehicles
