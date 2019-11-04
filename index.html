@@ -9,24 +9,41 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
-<body>
-    <label>Introduce un nombre</label>
-    <input id="name"></input>
-    <button onclick="mostrarPersonajePorNombre()">Mostrar Personaje</button>
-    <button onclick="mostrarTodosPersonajes()">Mostrar todos los Personajes</button>
-    <button onclick="limpiarResultados()">Limpiar Resultados</button>
+<body id="body">
+    <div class="contenedor">
+        <label>Introduce un nombre: </label>
+        <div>
+            <input id="name"></input>
+            <button onclick="mostrarPersonajePorNombre()">Mostrar Personaje</button>
+        </div>
+        <label>Introduce nº de episodio: </label>
+        <div>
+            <input id="episodio"></input>
+            <button onclick="mostrarTodosPersonajes()">Mostrar Personaje por Episodio</button>
+        </div>
+        <label>Introduce nº de localizacion: </label>
+        <div>
+            <input id="localizacion"></input>
+            <button onclick="mostrarPorLocalizacion()">Mostrar Personajes por Localizacion</button>
+        </div>
+        <button onclick="limpiarResultados()">Limpiar Resultados</button>
+    </div>
+    
+    
+    
+    
     <div id ="character"></div>
-    <div id="characterVacio" style="height: 50px;"></div>
-    <div id="characters"> </div>
-    <nav>
+    <div id="characterVacio" style="height: 30px;"></div>
+    <div id="characters" style="display: flex;"> </div>
+    <!-- <nav>
         <ul>
             <li class="submenu"><a href="#">Personajes</a><i class="far fa-caret-square-down more"></i><ul>
                 <li><a href="#" onclick="buscarPorNombre()">Por Nombre</a></li>
-                <li><a href="#">Servicio B</a></li>
+                <li><a href="#" onclick="buscarPorEstado()">Por Estado</a></li>
                 <li><a href="#">Servicio C</a></li>
             </ul></li>
         </ul>
-    </nav>
+    </nav> -->
     
     
 </body>

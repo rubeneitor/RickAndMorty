@@ -6,6 +6,10 @@ https://rickandmortyapi.com/api/episode
 
 ###
 
+https://rickandmortyapi.com/api/character
+
+###
+
 https://dragon-ball-api.herokuapp.com/api/character
 
 ###
@@ -19,7 +23,7 @@ https://dragon-ball-api.herokuapp.com/api/planet/Earth
 https://pokeapi.co/api/v2/berry-firmness/2/
 
 ###
-https://digimon-api.herokuapp.com/api/digimon/
+https://digimon-api.herokuapp.com/api/digimon/level/rookie
 
 ###
 http https://swapi.co/api/vehicles

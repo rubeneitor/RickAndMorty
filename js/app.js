@@ -45,15 +45,36 @@ async function getCharactersFromEpisode(url) {
     return characters;
   }
 
+  async function getCharactersFromLocation(url) {
+    const characters = await axios
+      .get(url)
+      .then(res => res.data)
+      .then(data => data.residents);
+    return characters;
+  }
+
 async function characters (){
+  const idEpisodio = document.getElementById('episodio').value;
     const charactersEndpoints = await getCharactersFromEpisode(
-        'https://rickandmortyapi.com/api/episode/2',
+        'https://rickandmortyapi.com/api/episode/' + idEpisodio,
       );
       const charactersData = await Promise.all(
         charactersEndpoints.map(url => getCharacter(url))
       );
     
       return charactersData;
+}
+
+async function charactersLocation (){
+  const idLocalizacion = document.getElementById('localizacion').value;
+  const charactersEndpoints = await getCharactersFromLocation(
+      'https://rickandmortyapi.com/api/location/' + idLocalizacion,
+    );
+    const charactersData = await Promise.all(
+      charactersEndpoints.map(url => getCharacter(url))
+    );
+  
+    return charactersData;
 }
 
 function createNode(string) {
@@ -92,7 +113,8 @@ async function getCharacterPorNombre(){
     const name = document.getElementById("name").value;
 
     console.log(name);
-    const results = await axios.get('https://rickandmortyapi.com/api/character/?name=' + name + '&status=Alive').then(res => res.data)
+    const results = await axios.get('https://rickandmortyapi.com/api/character/?name=' + name).then(res => res.data)
+    
     
 
     console.log(results);
@@ -100,13 +122,13 @@ async function getCharacterPorNombre(){
 
 
     const firstResult = results.results[0];
-
     const chaNombre = firstResult.name;
     const chaImage = firstResult.image;
-    // const chaId = character2.id;
+    const chaStatus = firstResult.status;
+    const chaEspecie = firstResult.species;
     console.log(chaImage);
     console.log(chaNombre);
-    document.getElementById('characters').innerHTML= `<h1>${chaNombre} </h1><img src=${chaImage} />`;
+    document.getElementById('characters').innerHTML= `<h1>${chaNombre} </h1><img src=${chaImage} /> <p>${chaStatus}</p> <p>${chaEspecie}</p>`;
     
     
 }
@@ -128,17 +150,14 @@ function mostrarPersonajePorNombre(){
         getCharacterPorNombre();
     }
     
-    
-   
-    
 }
 
-function mostrarTodosPersonajes(){
+function mostrarPorLocalizacion(){
   document.getElementById('characters').innerHTML = "";
-  document.getElementById('characters').style.display="block";
-  characters().then(data => {
+  document.getElementById('characters').style.display="flex";
+  charactersLocation().then(data => {
     data.forEach(character => {
-      const characterNode = createNode(`<div id="ccharacter">
+      const characterNode = createNode(`<div id="ccharacter"><br>
 
         <h1>${character.name}</h1>
         <img src="${character.image}"  />
@@ -161,8 +180,64 @@ function mostrarTodosPersonajes(){
   });;
 }
 
+function mostrarTodosPersonajes(){
+  document.getElementById('characters').innerHTML = "";
+  document.getElementById('characters').style.display="flex";
+  characters().then(data => {
+    data.forEach(character => {
+      const characterNode = createNode(`<div id="ccharacter">
+
+        <h1>${character.name}</h1>
+        <img src="${character.image}"  />
+        <p>${character.status}</p>
+        <p>${character.species}</p>
+
+      </div><div></div>`);
+        console.log(characterNode);
+
+
+      document
+        .querySelector('#characters')
+        .appendChild(characterNode);
+    });
+
+    console.log('all data fectch', data);
+  })
+  .catch(error => {
+    console.error('ups', error);
+  });;
+}
+
 function buscarPorNombre(){
-  getCharacterPorNombre();
+  const inputValue = document.getElementById('name').value;
+    console.log('INPUT VALUE ' + inputValue)
+    document.getElementById('characters').style.display="block"; 
+    if(inputValue === ""){
+        alert('Introduce un nombre de un personaje valido. Gracias!')
+        
+          
+    } else {
+        const espacioBlanco = createNode(`<div id="character2"></div>`);
+        document.querySelector('#characterVacio').appendChild(espacioBlanco);
+        // document.getElementById('characters').style.display = "none"
+        getCharacterPorNombre();
+    }
+}
+
+function buscarPorEstado(){
+  const inputValue = document.getElementById('name').value;
+    console.log('INPUT VALUE ' + inputValue)
+    document.getElementById('characters').style.display="block"; 
+    if(inputValue === ""){
+        alert('Introduce un nombre de un personaje valido. Gracias!')
+        
+          
+    } else {
+        const espacioBlanco = createNode(`<div id="character2"></div>`);
+        document.querySelector('#characterVacio').appendChild(espacioBlanco);
+        // document.getElementById('characters').style.display = "none"
+        getCharacterPorEstado();
+    }
 }
 
 function limpiarResultados(){
